@@ -34,12 +34,12 @@ $(US_STEM).nes: $(CFG_FILE) $(US_O_FILES)
 	ld65 -vm -m $(USBUILDDIR)/map.txt -Ln $(USBUILDDIR)/labels.txt --dbgfile $(US_STEM).dbg -o $@ -C $^
 
 $(USBUILDDIR)/%.o: $(SRCDIR)/%.s globals.inc
-	@echo .define SRC_ROM "$(BASE_ROM)" > $(USBUILDDIR)/build.inc
+	$(file > $(USBUILDDIR)/build.inc,.define SRC_ROM "$(BASE_ROM)")
 	ca65 -g -I $(USBUILDDIR) -o $@ $<
 
 $(J_STEM).nes: $(CFG_FILE) $(J_O_FILES)
 	ld65 -vm -m $(JBUILDDIR)/map.txt -Ln $(JBUILDDIR)/labels.txt --dbgfile $(J_STEM).dbg -o $@ -C $^
 
 $(JBUILDDIR)/%.o: $(SRCDIR)/%.s globals.inc
-	@echo .define SRC_ROM "$(BASE_ROM)" > $(JBUILDDIR)/build.inc
+	$(file > $(JBUILDDIR)/build.inc,.define SRC_ROM "$(BASE_ROM)")
 	ca65 -g -DJ_VERSION -I $(JBUILDDIR) -o $@ $<
