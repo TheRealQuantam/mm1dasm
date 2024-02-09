@@ -411,8 +411,9 @@ L10ECF := $8ECF
 	L10EE4 := $8EE4
 .endif
 
-SoundCodeInit := $9003
-SoundCodePlay := $9000
+; Bank 4 exports
+
+.global SoundCodeInit, SoundCodePlay
 
 ; Bank 5 exports
 
@@ -420,7 +421,6 @@ SoundCodePlay := $9000
 
 ; Bank 6 exports
 
-;.global Lbl_bff0, Lbl_8644, Lbl_864a, Lbl_863a, MajObjFrameAddrs, RunStageSelectionScreen, EnemyDataPointers, 
 .global Lbl_bff0, MajObjFrameAddrs, MajObjFrameTableAddrs, TileOffsTableAddrs, SpriteTileYOffs, SpriteTileLeftXOffs, SpriteTileRightXOffs, Lbl_863a, Lbl_8644
 .global Lbl_864a, MinObjFrameAddrs, MinObjFrameTableAddrs, DefaultObjectFlags
 .global DefaultObjectSpeedCtrl, DefaultObjectFireDelay, EnemyDataPointers
@@ -430,21 +430,3 @@ SoundCodePlay := $9000
 
 .global WriteChr, InitStagePaletteAndActives, DrawAtReset, ExecStageSelectionScreen, FirstScreenScreenTable, RoomLayoutLoadRoomNum, HideSprites, IssueSound, InitEndGameScene, NextFrame, TeleportToStage, InvokeWeaponSelectDialog, RecalculateActivesLowerIndex, RunBossAI, LoadEnemies, UpdateGraphics, LifeCycleUntick_forEveryone, MegaManKilled, SetupEnemyGraphicsPointer, PaletteSetupForBG, OpenFirstDoor, OpenSecondDoor, PaletteSetupForBGwith3F0, TimeDelayWithSpriteUpdates, LifeCycleTick_forEnemies, UpdateCurrentTileState, FindFreeObject, InitObjectDefaultSpeed, InitActor, C53D_routine, CreateGutsblockPieces, L1F853, CreateExplosionObject, TableObjectYHeightTable1, TableObjectYHeightTable2, DoCollisionCheckFor, L1C55D, TableObjectXWidthTable1, TableObjectXWidthTable2, ObjectVerifyBackgroundCollision, DrawBlockFromActiveLevelMap, LoadEnemyGraphics, L1CF23, DoTSAPPUtransfer, LoadActiveByIndexAndSetBlockingness, L1C64A, TestCollisionWithMegaman, GotItem, L1C7C5, L1FEEF, EnemyHitTable, TestShotHit, C7E4_routine, L1F7B5, RoutineF6FD_GutsmanWeapon, F8C6_routine, CheckCollisionAgainstActives, GutsblockHitByElecBeam, CheckMagnetBeamCollisionWithBG, LoadGutsblockPosition, AI_Object32, AI_Object3A, EnemySearchMegaman, EnemyCalculateJumpCurveToHitMegaman, CreateEnemy, RandomFunc, FindObjectOfSelectedType, L1C63F, L1F628, L1E8C5, L1E873, StageClear, EnemyKillScoreTable, IncreaseScore, WeaponDamageP, WeaponDamageC, WeaponDamageI, WeaponDamageB, WeaponDamageF, WeaponDamageE, WeaponDamageG
 .global Lbl_c436, Lbl_c442, TeleportToStage_Bank06callback, SpawnObject_TypeIsFF, Lbl_c439, Lbl_c45e, CalculateNametableAddress, Adjust32x32BlockAddress, DrawBlockFromActiveLevelMap_Bank06callback, Lbl_c400, Lbl_c3e3, MegamanPalette, PaletteSetupForSprites, WritePalette, DrawObject
-
-/*
-.global MajObjFrameAddrs, MajObjFrameTableAddrs, TileOffsTableAddrs, SpriteTileYOffs, SpriteTileLeftXOffs, SpriteTileRightXOffs, Lbl_863a, Lbl_8644
-.global Lbl_864a, MinObjFrameAddrs, MinObjFrameTableAddrs, DefaultObjectFlags
-.global DefaultObjectSpeedCtrl, DefaultObjectFireDelay, EnemyDataPointers
-.global Lbl_ab57, Lbl_ab72, Lbl_ab8d
-.global Lbl_aba4, Lbl_ac26, Lbl_ac45, Lbl_ac97, Lbl_ace6, Lbl_ad63, Lbl_add3, Lbl_ae0f
-.global Lbl_ae2b, Lbl_ae36, EndingData, PresentedText, Lbl_b250
-.global Lbl_b2e1, Lbl_b2ec, Lbl_b39f, Lbl_b3a7, ChangeMegamanPalette, Lbl_b3d1, Lbl_b44e, Lbl_b4c6
-.global Lbl_b4e4, Lbl_b4ef, Lbl_b503, WeaponSelectTab, WeaponsOwnedMask, WeaponSelectTab2, Lbl_b527
-.global Lbl_b52f, StageSelectionScreenMain, Lbl_b5a2, Lbl_b721, Lbl_b7f6, Lbl_b88a, Lbl_b953, Lbl_bb02
-.global Lbl_bb4a, Lbl_bb81, Lbl_bb88, Lbl_bbad, Lbl_bbfb, Lbl_bc00, Lbl_bc15, Lbl_bc39
-.global Lbl_bc5a, Lbl_bc90, Lbl_bcf1, Lbl_bd27, Lbl_bd40, Lbl_bd5b, Lbl_bd76, Lbl_be1b
-.global Lbl_be3f, Lbl_be63, Lbl_be87, Lbl_be88, Lbl_be95, Lbl_be9c, Lbl_bea6, Lbl_beaa
-.global Lbl_beb0, Lbl_beca, Lbl_bee6
-.global Lbl_bf02, Lbl_bf09, Lbl_bf10, Lbl_bf17, BossPoseTable, TextTable
-.global Lbl_bf6f, Lbl_bfac, WeaponsOwnedBits, Lbl_bff0, DoWeaponSelectDialog, RunStageSelectionScreen
-*/

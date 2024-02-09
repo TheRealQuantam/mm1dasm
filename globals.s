@@ -1,7 +1,7 @@
 .include "globals.inc"
 
 ; ROM data banks
-inc_banks 0, 5
+inc_banks 0, 4
 
 .segment "HDR"
 .byte "NES", $1a ; Signature
