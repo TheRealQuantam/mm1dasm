@@ -4512,11 +4512,12 @@ Lbl_bc5a:
     asl a
     rol $12
     tay
-    lda #$00
+    lda #<MajObjFrameAddrs
     sta $11
     lda $12
     and #$01
-    ora #$80
+	; To support MajObjFrameAddrs & $100, change this to adc? But what will carry be??
+    ora #>MajObjFrameAddrs
     sta $12
     lda ($11),y
     sta $04

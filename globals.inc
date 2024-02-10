@@ -393,6 +393,15 @@ RoomShutterBlockData := $8F40
 RoomShutterBlockPals := $8F70
 RoomShutterInfo      := $8F80
 
+; Graphics bank (0-3) stuff to be identified. These MUST be page-aligned.
+LxB000 := $B000
+LxB200 := $B200
+LxB700 := $B700
+LxB800 := $B800
+LxB900 := $B900
+LxBB00 := $BB00
+
+; Title/continue screen graphics data
 L10EA1 := $8EA1
 L10EC7 := $8EC7
 L10ECF := $8ECF

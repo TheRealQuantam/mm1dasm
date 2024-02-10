@@ -121,7 +121,7 @@ PlayStageClearMusic:
 L1C079: ; ++
 /* 1C079: A9 00 */     lda #$00
 /* 1C07B: 85 5C */     sta $5C
-/* 1C07D: A9 B7 */     lda #$B7
+/* 1C07D: A9 B7 */     lda #>LxB700
 /* 1C07F: A2 0B */     ldx #$0B
 /* 1C081: A0 08 */     ldy #$08
 /* 1C083: 20 BE F0 */  jsr DoPPUtransferRoutineF0BE
@@ -825,7 +825,7 @@ InitStagePaletteAndActives:
 L1C497: ; +
 /* 1C497: A9 A0 */     lda #<RoomSpritePalettes1
 /* 1C499: 85 35 */     sta $35
-/* 1C49B: A9 8C */     lda #(>RoomSpritePalettes1)
+/* 1C49B: A9 8C */     lda #>RoomSpritePalettes1
 /* 1C49D: 85 36 */     sta $36
 L1C49F: ; ++
 
@@ -1380,9 +1380,9 @@ SwitchBankTile:
 /* 1C7AF: 29 FC */     and #$FC
 /* 1C7B1: 4A */        lsr a
 /* 1C7B2: 4A */        lsr a
-/* 1C7B3: 09 80 */     ora #$80 ;address of bank begin
+/* 1C7B3: 09 80 */     ora #>RoomBlockData
 /* 1C7B5: 85 05 */     sta $05
-/* 1C7B7: A9 00 */     lda #$00
+/* 1C7B7: A9 00 */     lda #<RoomBlockData
 /* 1C7B9: 85 04 */     sta $04
 /* 1C7BB: 68 */        pla
 
@@ -2022,11 +2022,11 @@ L1CB1E: ; -
 /* 1CB2F: 20 31 D1 */  jsr UpdateGraphics                              ; $D131
 /* 1CB32: A9 02 */     lda #$02
 /* 1CB34: 85 5C */     sta $5C
-/* 1CB36: A9 B9 */     lda #$B9
+/* 1CB36: A9 B9 */     lda #>LxB900
 /* 1CB38: A2 09 */     ldx #$09
 /* 1CB3A: A0 08 */     ldy #$08
 /* 1CB3C: 20 BE F0 */  jsr DoPPUtransferRoutineF0BE
-/* 1CB3F: A9 B2 */     lda #$B2
+/* 1CB3F: A9 B2 */     lda #>LxB200
 /* 1CB41: A2 0A */     ldx #$0A
 /* 1CB43: A0 08 */     ldy #$08
 /* 1CB45: 20 BE F0 */  jsr DoPPUtransferRoutineF0BE
@@ -3082,10 +3082,10 @@ L1D184: ; +
 /* 1D18F: 0A */        asl a
 /* 1D190: A8 */        tay
 
-/* 1D191: A9 81 */     lda #$81
+/* 1D191: A9 81 */     lda #>MajObjFrameTableAddrs
 /* 1D193: 69 00 */     adc #$00
 /* 1D195: 85 05 */     sta $05
-/* 1D197: A9 86 */     lda #$86
+/* 1D197: A9 86 */     lda #<MajObjFrameTableAddrs
 /* 1D199: 85 04 */     sta $04
 
 /* 1D19B: B1 04 */     lda ($04),y
@@ -3149,7 +3149,6 @@ L1D1EC: ; +++
 /* 1D1F2: 26 05 */     rol $05
 /* 1D1F4: A8 */        tay
 
-.assert MajObjFrameAddrs & $100 = 0, lderror, "MajObjFrameAddrs & $100 must be 0"
 /* 1D1F5: A9 80 */     lda #>MajObjFrameAddrs
 ; To support MajObjFrameAddrs & $100, change this to adc $05
 /* 1D1F7: 05 05 */     ora $05
@@ -8164,7 +8163,7 @@ L1F09E: ; +
 /* 1F09E: A9 03 */     lda #$03
 /* 1F0A0: 85 5C */     sta $5C
 
-/* 1F0A2: A9 B0 */     lda #$B0
+/* 1F0A2: A9 B0 */     lda #>LxB000
 /* 1F0A4: A2 18 */     ldx #$18
 /* 1F0A6: A0 40 */     ldy #$40
 /* 1F0A8: 20 BE F0 */  jsr DoPPUtransferRoutineF0BE
@@ -8257,12 +8256,12 @@ L1F118:
 L1F128: ; +
 /* 1F128: A9 03 */     lda #$03
 /* 1F12A: 85 5C */     sta $5C
-/* 1F12C: A9 B8 */     lda #$B8
+/* 1F12C: A9 B8 */     lda #>LxB800
 /* 1F12E: A2 19 */     ldx #$19
 /* 1F130: A0 38 */     ldy #$38
 /* 1F132: 20 BE F0 */  jsr DoPPUtransferRoutineF0BE
 /* 1F135: C6 5C */     dec $5C
-/* 1F137: A9 BB */     lda #$BB
+/* 1F137: A9 BB */     lda #>LxBB00
 /* 1F139: A2 12 */     ldx #$12
 /* 1F13B: A0 10 */     ldy #$10
 /* 1F13D: 20 BE F0 */  jsr DoPPUtransferRoutineF0BE
