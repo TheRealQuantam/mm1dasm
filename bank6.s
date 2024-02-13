@@ -2429,7 +2429,7 @@ RunEndGameScene: ; at ab00
     ldx #$04
 
 Lbl_ab1e:
-    jsr Lbl_c436
+    jsr F1C436
     lda #$8b
     sta ObjectSpriteNum,x
     lda #$00
@@ -2444,7 +2444,7 @@ Lbl_ab1e:
     bne Lbl_ab1e
 
 Lbl_ab3c:
-    jsr Lbl_c442
+    jsr F1C442
     lda $be
     cmp #$01
     bne Lbl_ab3c
@@ -2467,8 +2467,8 @@ Lbl_ab57:
     inc $5b
 
 Lbl_ab62:
-    jsr Lbl_ae2b
-    jsr Lbl_c442
+    jsr F1AE2B
+    jsr F1C442
     ldy $59
     dec $5c
     bne Lbl_ab62
@@ -2487,14 +2487,14 @@ Lbl_ab72:
     bmi Lbl_ab91
 
 Lbl_ab87:
-    jsr Lbl_c442
+    jsr F1C442
     jmp Lbl_ab72
 
 Lbl_ab8d:
     .byte $21,$11,$01,$0f
 
 Lbl_ab91:
-    jsr Lbl_c442
+    jsr F1C442
     lda $be
     cmp #$08
     bne Lbl_ab91
@@ -2517,7 +2517,7 @@ Lbl_aba4:
     beq Lbl_abc1
 
 Lbl_abbb:
-    jsr Lbl_c442
+    jsr F1C442
     jmp Lbl_aba4
 
 Lbl_abc1:
@@ -2537,7 +2537,7 @@ Lbl_abd5:
     sta RawPPUtransferAddress+1,x
     dex
     bne Lbl_abd5
-    jsr Lbl_c442
+    jsr F1C442
     clc
     lda RawPPUtransferAddress+1
     adc #$40
@@ -2562,7 +2562,7 @@ Lbl_abfa:
     inc $bf
 
 Lbl_ac0a:
-    jsr Lbl_c442
+    jsr F1C442
     lda ObjectUnknown440+0
     bne Lbl_ac0a
     sta ObjectFlags+0
@@ -2657,12 +2657,12 @@ Lbl_ac97:
     sta ObjectXSpeed+0
     lda #$b0
     sta ObjectXSpeedFraction+0
-    jsr Lbl_c439
+    jsr F1C439
     lda $1a
     beq Lbl_acc9
     cmp $3c
     bne Lbl_acc6
-    jsr Lbl_ae0f
+    jsr F1AE0F
 
 Lbl_acc6:
     jmp Lbl_ac26
@@ -2699,7 +2699,7 @@ Lbl_ace6:
     sbc #$00
     sta ObjectYSpeed+0
     bmi Lbl_ad12
-    jsr Lbl_c442
+    jsr F1C442
     jmp Lbl_ace6
 
 Lbl_ad12:
@@ -2727,7 +2727,7 @@ Lbl_ad2f:
     stx $5a
 
 Lbl_ad3a:
-    jsr Lbl_c442
+    jsr F1C442
     lda $23
     and #$07
     bne Lbl_ad3a
@@ -2739,7 +2739,7 @@ Lbl_ad3a:
     bne Lbl_ad1b
 
 Lbl_ad50:
-    jsr Lbl_c442
+    jsr F1C442
     lda $14
     and #$08
     beq Lbl_ad50
@@ -2848,7 +2848,7 @@ Lbl_ae07:
     bne Lbl_add5
     jmp Lbl_ac45
 
-Lbl_ae0f:
+F1AE0F:
     dec $3c
     dec $3c
     cmp #$fc
@@ -2860,7 +2860,7 @@ Lbl_ae1b:
     ldy $59
     lda ($5a),y
     cmp #$ff
-    bne Lbl_ae2b
+    bne F1AE2B
     iny
     bne Lbl_ae28
     inc $5b
@@ -2869,7 +2869,7 @@ Lbl_ae28:
     sty $59
     rts
 
-Lbl_ae2b:
+F1AE2B:
     lda ($5a),y
     sta $5e
     clc
@@ -3026,7 +3026,7 @@ DrawWeaponSelectMenuColumnLoop:
     sta TSAPPUtransfer0NTdata-2,x
     lda #$01
     sta $1c
-    jsr Lbl_b3d1
+    jsr F1B3D1
     jsr NextFrame
     lda RawPPUtransferAddress+1
     clc
@@ -3211,7 +3211,7 @@ Lbl_b26c:
     bne Lbl_b279
     lda FrameCounter
     and #$08
-    jsr Lbl_b3a7
+    jsr F1B3A7
 
 Lbl_b279:
     jsr NextFrame
@@ -3220,7 +3220,7 @@ Lbl_b279:
     beq Lbl_b26c
     pha
      lda #$01
-     jsr Lbl_b3a7
+     jsr F1B3A7
     pla
     and #$30
     beq Lbl_b2bf
@@ -3310,7 +3310,7 @@ Lbl_b316:
     sta $06
     lda $5b
     ldy RawPPUtransferAddress+1
-    jsr Lbl_c400
+    jsr F1C400
     lda #$10
     sta $5e
     jsr NextFrame
@@ -3347,7 +3347,7 @@ Lbl_b316:
     sta $06
     lda $5b
     ldy RawPPUtransferAddress+1
-    jsr Lbl_c400
+    jsr F1C400
     lda #$10
     sta $5e
     lda WeaponSelect
@@ -3372,7 +3372,7 @@ Lbl_b316:
 Lbl_b39f:
     .byte $91,$91,$91,$92,$90,$94,$95,$91
 
-Lbl_b3a7:
+F1B3A7:
     php
     lda WeaponSelect
     tax
@@ -3401,7 +3401,7 @@ ChangeMegamanPalette: ;At B3BF
     jsr PaletteSetupForSprites
     rts
 
-Lbl_b3d1:
+F1B3D1:
     ldx #$00
 
 Lbl_b3d3:
@@ -3431,7 +3431,7 @@ Lbl_b3dc:
     lda #$02
     ldx #$00
     ldy RawPPUtransferAddress+1
-    jsr Lbl_c400
+    jsr F1C400
     lda #$10
     sta $5e
     lda #$01
@@ -3747,7 +3747,7 @@ Lbl_b6c2: ; - ;at b6c2
     cpx #$04
     bne Lbl_b6c2 ; -
     ldx $0c
-    jsr Lbl_bc5a
+    jsr F1BC5A
     inc CurrentStage
     lda CurrentStage
     cmp #$06
@@ -3792,7 +3792,7 @@ Lbl_b70d:
     cpy #$04
     bne Lbl_b70d
     lda #$55
-    jsr Lbl_bb02
+    jsr F1BB02
 
 Lbl_b721:
     jsr NextFrame
@@ -3804,7 +3804,7 @@ Lbl_b721:
     ldx CurrentStage
     pha
     lda #$00
-    jsr Lbl_bb02
+    jsr F1BB02
     lda CurrentStage
     asl a
     tay
@@ -3847,7 +3847,7 @@ Lbl_b75e:
 
 Lbl_b76e:
     tya
-    jsr Lbl_bb02
+    jsr F1BB02
 
 Lbl_b772:
     jmp Lbl_b721
@@ -3904,7 +3904,7 @@ Lbl_b7da:
     cmp #$08
     bcs Lbl_b7ee
     ldy #$00
-    jsr Lbl_bc39
+    jsr F1BC39
     jmp Lbl_b7f6
 
 Lbl_b7ee:
@@ -3912,7 +3912,7 @@ Lbl_b7ee:
     sta ObjectSpriteNum+0
 
 Lbl_b7f3:
-    jsr Lbl_bc00    ;Iteration: moves the boss to its proper location
+    jsr F1BC00    ;Iteration: moves the boss to its proper location
 
 Lbl_b7f6:
     jsr NextFrame
@@ -3931,7 +3931,7 @@ Lbl_b7f6:
 
 Lbl_b812:
     ldy #$00
-    jsr Lbl_bc39
+    jsr F1BC39
     jsr NextFrame
     dec MiscCounter1
     bne Lbl_b812 ;This loop only uses 3 frames... whatever it does.
@@ -3981,17 +3981,17 @@ Lbl_b85c:
 
 Lbl_b872:
     ldy #$00
-    jsr Lbl_bc39
+    jsr F1BC39
     lda CurrentStage
     cmp #$02
     bne Lbl_b883
-    jsr Lbl_bbad ;Bombman has also a bomb!
+    jsr F1BBAD ;Bombman has also a bomb!
     jmp Lbl_b88a
 
 Lbl_b883:
     cmp #$06
     bne Lbl_b88a
-    jsr Lbl_bcf1 ;This is for Wily...
+    jsr F1BCF1 ;This is for Wily...
 
 Lbl_b88a:
     jsr NextFrame
@@ -4006,12 +4006,12 @@ Lbl_b88a:
     sta TSAPPUtransfer0AttrData
     lda CurrentStage
     ldx #$07    ; Text length
-    jsr Lbl_bb4a    ; Print text
+    jsr F1BB4A    ; Print text
     lda #$d0
     sta TSAPPUtransfer0AttrAddress+1
     lda #$09
     ldx #$0c
-    jsr Lbl_bb4a
+    jsr F1BB4A
     ldx #$44
     ldy #$03
     lda #$b0
@@ -4022,7 +4022,7 @@ Lbl_b88a:
     sta $0d
     sta $0e
     sta $0f
-    jsr Lbl_bb88
+    jsr F1BB88
     lda FrameCounter
     and #$0f
     adc #$28
@@ -4050,7 +4050,7 @@ Lbl_b8f0:
     sta $0d
     lda #$f0
     ldy #$02
-    jsr Lbl_bb81
+    jsr F1BB81
     lda #$f8
     sta CurrentSpriteData+0,x
     lda FrameCounter
@@ -4082,7 +4082,7 @@ Lbl_b926:
 Lbl_b92f:
     sta $0d
     ldy #$03
-    jsr Lbl_bb81
+    jsr F1BB81
 
 Lbl_b936:
     clc
@@ -4155,7 +4155,7 @@ Lbl_b97c:
     sta MiscCounter1
 
 Lbl_b9b7:
-    jsr Lbl_bd27
+    jsr F1BD27
     jsr NextFrame
     dec MiscCounter1
     bne Lbl_b9b7
@@ -4193,7 +4193,7 @@ Lbl_ba05:
     lda #$00
     sta $06
     sta $07
-    jsr Lbl_bd40
+    jsr F1BD40
     lda ObjectPosX+0
     cmp #$5f
     bcc Lbl_ba05
@@ -4207,7 +4207,7 @@ Lbl_ba21:
     sta $07
     lda #$80
     sta $06
-    jsr Lbl_bd40
+    jsr F1BD40
     lda ObjectPosY+0
     cmp #$6c
     bcc Lbl_ba21
@@ -4226,7 +4226,7 @@ Lbl_ba46:
     lda ObjectPosY+0
     sbc #$00
     sta ObjectPosY+0
-    jsr Lbl_bd27
+    jsr F1BD27
     jsr NextFrame
     lda ObjectPosY+0
     cmp #$50
@@ -4253,7 +4253,7 @@ Lbl_ba7a:
     sta ObjectPosY+2
 
 Lbl_ba81:
-    jsr Lbl_bd27
+    jsr F1BD27
     jsr NextFrame
     dec MiscCounter1
     bne Lbl_ba68
@@ -4265,7 +4265,7 @@ Lbl_ba81:
     sta MiscCounter1
 
 Lbl_ba99:
-    jsr Lbl_bd27
+    jsr F1BD27
     jsr NextFrame
     dec MiscCounter1
     bne Lbl_ba99
@@ -4278,7 +4278,7 @@ Lbl_baa3:
     lda ObjectPosY+0
     adc #$00
     sta ObjectPosY+0
-    jsr Lbl_bd27
+    jsr F1BD27
     jsr NextFrame
     lda ObjectPosY+0
     cmp #$6c
@@ -4296,7 +4296,7 @@ Lbl_bacb:
     sta $07
     lda #$80
     sta $06
-    jsr Lbl_bd40
+    jsr F1BD40
     lda ObjectPosY+0
     cmp #$48
     bcs Lbl_bacb
@@ -4309,7 +4309,7 @@ Lbl_bae3:
     lda #$00
     sta $06
     sta $07
-    jsr Lbl_bd5b
+    jsr F1BD5B
     lda ObjectPosX+0
     cmp #$1b
     bcc Lbl_bae3
@@ -4317,7 +4317,7 @@ Lbl_bae3:
     bcs Lbl_bae3
     jmp Lbl_b953
 
-Lbl_bb02:
+F1BB02:
     sta $0c
     ldx CurrentStage
     lda Lbl_be95,x
@@ -4360,7 +4360,7 @@ Lbl_bb47:
     sta $1c
     rts
 
-Lbl_bb4a:
+F1BB4A:
     sta ObjectFlags+0
     stx ObjectUnknown440
     ldy #$00
@@ -4393,12 +4393,12 @@ Lbl_bb77:
 Lbl_bb80:
     rts
 
-Lbl_bb81: ;display promised score.. maybe text, too
+F1BB81: ;display promised score.. maybe text, too
     ldx #$50
     lda #$98
     sta ObjectPosX+0
 
-Lbl_bb88:
+F1BB88:
     lda ObjectPosY+0
     sta CurrentSpriteData+0,x
     lda ObjectPosX+0
@@ -4415,10 +4415,10 @@ Lbl_bb88:
     inx
     inx
     dey
-    bne Lbl_bb88
+    bne F1BB88
     rts
 
-Lbl_bbad:
+F1BBAD:
     dec CurrentStage
     dec CurrentStage
     lda MiscCounter1
@@ -4439,7 +4439,7 @@ Lbl_bbbf:
     sta ObjectPosX+2
     lda #$40
     sta $10
-    jsr Lbl_bc5a
+    jsr F1BC5A
     jmp Lbl_bbfb
 
 Lbl_bbd8:
@@ -4458,14 +4458,14 @@ Lbl_bbd8:
 
 Lbl_bbf6:
     ldy #$02
-    jsr Lbl_bc15
+    jsr F1BC15
 
 Lbl_bbfb:
     inc CurrentStage
     inc CurrentStage
     rts
 
-Lbl_bc00:
+F1BC00:
     ldy #$00
     clc
     lda ObjectPosXfraction+0
@@ -4475,7 +4475,7 @@ Lbl_bc00:
     adc ObjectPosX+1
     sta ObjectPosX+0
 
-Lbl_bc15:
+F1BC15:
     sec
     lda ObjectPosYfraction,y
     sbc ObjectYSpeedFraction,y
@@ -4491,7 +4491,7 @@ Lbl_bc15:
     sbc #$00
     sta ObjectYSpeed,y
 
-Lbl_bc39:
+F1BC39:
     lda ObjectSpriteNum,y
     sta $0d
     lda ObjectPosY,y
@@ -4501,13 +4501,13 @@ Lbl_bc39:
     lda ObjectFlags,y
     sta $10
     cpy #$00
-    bne Lbl_bc5a
+    bne F1BC5A
     ldy #$00
     ldx #$40
     jsr HideSprites
     ldx #$00
 
-Lbl_bc5a:
+F1BC5A:
     lda $0d
     asl a
     rol $12
@@ -4597,7 +4597,7 @@ Lbl_bcda:
 Lbl_bcf0:
     rts
 
-Lbl_bcf1: ;something specific to Wily
+F1BCF1: ;something specific to Wily
     lda $59
     cmp #$30
     beq Lbl_bd26
@@ -4619,7 +4619,7 @@ Lbl_bcf1: ;something specific to Wily
     sta RawPPUtransferAddress+0
     ldy #$00
     lda #$02
-    jsr Lbl_c400
+    jsr F1C400
     lda #$10
     sta $5e
     inc $59
@@ -4627,7 +4627,7 @@ Lbl_bcf1: ;something specific to Wily
 Lbl_bd26:
     rts
 
-Lbl_bd27:
+F1BD27:
     ldy #$00
     sty $0d
     ldx #$40
@@ -4643,8 +4643,8 @@ Lbl_bd34:
     bne Lbl_bd34
     rts
 
-Lbl_bd40:
-    jsr Lbl_bd76
+F1BD40:
+    jsr F1BD76
     ldx #$6c
 
 Lbl_bd45:
@@ -4663,8 +4663,8 @@ Lbl_bd51:
     jsr NextFrame
     rts
 
-Lbl_bd5b:
-    jsr Lbl_bd76
+F1BD5B:
+    jsr F1BD76
     ldx #$6c
 
 Lbl_bd60:
@@ -4683,7 +4683,7 @@ Lbl_bd6c:
     jsr NextFrame
     rts
 
-Lbl_bd76:
+F1BD76:
     clc
     lda ObjectPosXfraction+0
     adc $04
@@ -4704,7 +4704,7 @@ Lbl_bd76:
     clc
     adc #$10
     sta ObjectPosY+1
-    jsr Lbl_bd27
+    jsr F1BD27
     rts
 
     ; Palettes?

@@ -144,10 +144,10 @@ L15097: ; +
 /* 15099: 18 */        CLC
 /* 1509A: 69 01 */     ADC #$01
 /* 1509C: 85 1B */     STA ScrollPosScreen
-/* 1509E: 20 D8 A0 */  JSR L160D8
+/* 1509E: 20 D8 A0 */  JSR F160D8
 /* 150A1: 68 */       PLA
 /* 150A2: 8D 60 04 */ STA ObjectPosScreen+0                             ; $0460
-/* 150A5: 20 D8 A0 */ JSR L160D8
+/* 150A5: 20 D8 A0 */ JSR F160D8
 /* 150A8: 68 */       PLA
 /* 150A9: AA */       TAX
 /* 150AA: BD C3 93 */ LDA FirstScreenEnemyPointer,X
@@ -453,7 +453,7 @@ ScrollPreviousRoom:
 /* 1526F: 85 27 */    STA CurrentBeginScreen
 /* 15271: 20 05 A1 */ JSR ForgetRoomObjects
 /* 15274: A5 28 */    LDA CurrentEndScreen
-/* 15276: 20 D8 A0 */ JSR L160D8
+/* 15276: 20 D8 A0 */ JSR F160D8
 /* 15279: CE 60 04 */ DEC ObjectPosScreen+0                             ; $0460
 /* 1527C: 20 58 C6 */ JSR SetupEnemyGraphicsPointer
 /* 1527F: A5 26 */    LDA CurrentStripeEndType
@@ -471,7 +471,7 @@ L15290: ; +
 /* 15293: A5 28 */    LDA CurrentEndScreen
 /* 15295: 38 */       SEC
 /* 15296: E9 01 */    SBC #$01
-/* 15298: 20 D8 A0 */ JSR L160D8
+/* 15298: 20 D8 A0 */ JSR F160D8
 /* 1529B: A9 00 */    LDA #$00
 /* 1529D: 85 8F */    STA ZigZagFireStatus
 /* 1529F: A9 01 */    LDA #$01
@@ -485,7 +485,7 @@ ScrollNextRoom:
 /* 152AB: E8 */       INX
 /* 152AC: 8A */       TXA
 /* 152AD: 48 */       PHA
-/* 152AE: 20 D8 A0 */ JSR L160D8
+/* 152AE: 20 D8 A0 */ JSR F160D8
 ; Test if it's first door
 /* 152B1: A6 31 */    LDX CurrentStage
 /* 152B3: BD 02 9F */ LDA FirstDoorLocations,X
@@ -536,7 +536,7 @@ L15301:
 /* 15304: A5 28 */    LDA CurrentEndScreen
 /* 15306: 18 */       CLC
 /* 15307: 69 02 */    ADC #$02
-/* 15309: 20 D8 A0 */ JSR L160D8
+/* 15309: 20 D8 A0 */ JSR F160D8
 /* 1530C: E6 29 */    INC CurrentOrderNum
 /* 1530E: A4 29 */    LDY CurrentOrderNum
 /* 15310: 20 13 C6 */ JSR RoomLayoutLoadRoomNum
@@ -845,7 +845,7 @@ L15518: ; +
 /* 1551D: 8D 20 04 */ STA ObjectFlags+0
 
 L15520: ; ++
-/* 15520: 20 E7 9C */ JSR L15CE7
+/* 15520: 20 E7 9C */ JSR F15CE7
 /* 15523: A5 9B */    LDA LiftUnknown9B
 /* 15525: 29 40 */    AND #$40
 /* 15527: F0 06 */    BEQ L1552F ; +
@@ -1147,10 +1147,10 @@ L156DB:
 /* 156E8: 68 */       PLA
 /* 156E9: 29 0F */    AND #$0f
 /* 156EB: 85 01 */    STA $01
-/* 156ED: 20 4A 97 */ JSR L1574A
+/* 156ED: 20 4A 97 */ JSR F1574A
 /* 156F0: AD 40 04 */ LDA ObjectUnknown440+0
 /* 156F3: F0 3B */    BEQ L15730
-/* 156F5: 20 E7 9C */ JSR L15CE7
+/* 156F5: 20 E7 9C */ JSR F15CE7
 /* 156F8: A5 9B */    LDA LiftUnknown9B
 
 /* 156FA: AE 00 04 */ LDX ObjectSpriteNum+0
@@ -1206,7 +1206,7 @@ L15742:
 
 
 
-L1574A:
+F1574A:
 /* 1574A: CC 00 04 */ CPY ObjectSpriteNum+0
 /* 1574D: F0 47 */    BEQ L15796
 /* 1574F: 8C 00 04 */ STY ObjectSpriteNum+0
@@ -1711,7 +1711,7 @@ L15A7A: ; +
 /* 15A80: 85 0D */    STA $0D
 /* 15A82: A9 0A */    LDA #$0a
 /* 15A84: 85 0E */    STA $0E
-/* 15A86: 20 53 F8 */ JSR L1F853
+/* 15A86: 20 53 F8 */ JSR F1F853
 L15A89:
 /* 15A89: A2 10 */    LDX #$10
 /* 15A8B: 20 76 C5 */ JSR FindFreeObject
@@ -1821,7 +1821,7 @@ L15B4B:
 /* 15B54: 9D 00 06 */ STA ObjectPosY,X
 /* 15B57: D0 DA */    BNE L15B33
 L15B59:
-/* 15B59: 20 35 A3 */ JSR L16335
+/* 15B59: 20 35 A3 */ JSR F16335
 /* 15B5C: 4C 8A 99 */ JMP L1598A
 
 L15B5F:
@@ -2047,7 +2047,7 @@ L15CE5: ; ++++
 /* 15CE6: 60 */       RTS
 
 
-L15CE7:
+F15CE7:
 /* 15CE7: A0 00 */    LDY #$00
 /* 15CE9: AD 00 04 */ LDA ObjectSpriteNum+0
 /* 15CEC: A2 08 */    LDX #$08
@@ -2065,7 +2065,7 @@ L15D00: ; +
 /* 15D00: BC E6 9D */ LDY Table9DE6,X
 L15D03: ; ++
 /* 15D03: A2 00 */    LDX #$00
-/* 15D05: 20 5D C5 */ JSR L1C55D
+/* 15D05: 20 5D C5 */ JSR F1C55D
 /* 15D08: A5 96 */    LDA $96
 /* 15D0A: D0 08 */    BNE L15D14
 /* 15D0C: A5 98 */    LDA $98
@@ -2577,7 +2577,7 @@ L16080: ; -
 /* 16080: 8A */       TXA
 /* 16081: 48 */       PHA  ; phx
 /* 16082: 20 31 D1 */  JSR UpdateGraphics                                  ; $D131
-/* 16085: 20 23 CF */  JSR L1CF23
+/* 16085: 20 23 CF */  JSR F1CF23
 /* 16088: 20 C4 C6 */  JSR LoadEnemyGraphics
 /* 1608B: 20 1B C0 */  JSR NextFrame                                       ; $C01B
 /* 1608E: 68 */       PLA
@@ -2622,7 +2622,7 @@ VertScrollBeginValue: .byte NEG{17}, 0
 
 
 
-L160D8:
+F160D8:
 /* 160D8: 85 05 */    STA $05
 /* 160DA: A2 FF */    LDX #$ff
 /* 160DC: 86 04 */    STX $04
@@ -2704,7 +2704,7 @@ L16144:
 /* 16144: A9 1E */    LDA #$1E
 L16146: ; -
 /* 16146: 85 0C */     STA $0C
-/* 16148: 20 4A C6 */  JSR L1C64A
+/* 16148: 20 4A C6 */  JSR F1C64A
 /* 1614B: A5 0C */     LDA $0C
 /* 1614D: C9 2A */     CMP #$2A
 /* 1614F: F0 05 */     BEQ L16156 ; +
@@ -2719,7 +2719,7 @@ L16157:
 /* 16157: A9 54 */    LDA #$54
 L16159: ; -
 /* 16159: 85 0C */     STA $0C
-/* 1615B: 20 4A C6 */  JSR L1C64A
+/* 1615B: 20 4A C6 */  JSR F1C64A
 /* 1615E: 38 */        SEC
 /* 1615F: A5 0C */     LDA $0C
 /* 16161: E9 06 */     SBC #$06
@@ -2828,7 +2828,7 @@ L161EB: ; +
 
 /* 1620C: 8A */       TXA
 /* 1620D: 48 */       PHA
-/* 1620E: 20 C5 C7 */ JSR L1C7C5
+/* 1620E: 20 C5 C7 */ JSR F1C7C5
 /* 16211: 68 */       PLA
 /* 16212: AA */       TAX
 /* 16213: A9 0A */    LDA #$0a
@@ -3031,7 +3031,7 @@ L16329: ; +
 /* 1632D: BD 00 04 */ LDA ObjectSpriteNum,X
 /* 16330: D9 88 A8 */ CMP GutsblockObjectSpritenum,Y
 /* 16333: D0 EE */    BNE L16323
-L16335:
+F16335:
 /* 16335: 38 */       SEC
 /* 16336: BD 00 06 */ LDA ObjectPosY,X
 /* 16339: E9 10 */    SBC #$10
@@ -3043,7 +3043,7 @@ L16335:
 /* 16345: BD 60 04 */ LDA ObjectPosScreen,X
 /* 16348: E9 00 */    SBC #$00
 /* 1634A: 85 01 */    STA $01
-/* 1634C: 20 B5 F7 */ JSR L1F7B5
+/* 1634C: 20 B5 F7 */ JSR F1F7B5
 /* 1634F: A5 61 */    LDA NumberOfFramesSinceShooting
 /* 16351: C9 10 */    CMP #$10
 /* 16353: B0 04 */    BCS L16359
@@ -4154,7 +4154,7 @@ ObjectFlipYmovement:
 
 
 AI_Met:
-/* 16B79: 20 A5 B3 */ JSR L173A5
+/* 16B79: 20 A5 B3 */ JSR F173A5
 /* 16B7C: BD 40 04 */ LDA ObjectUnknown440,X
 /* 16B7F: 29 F0 */    AND #$f0
 /* 16B81: F0 45 */    BEQ L16BC8
@@ -4221,7 +4221,7 @@ L16BE1:
 L16BE4:
 /* 16BE4: 98 */       TYA
 /* 16BE5: 9D 40 04 */ STA ObjectUnknown440,X
-/* 16BE8: 20 A3 AF */ JSR L16FA3
+/* 16BE8: 20 A3 AF */ JSR F16FA3
 /* 16BEB: 20 49 BE */ JSR EnemyAI_MovementsAndDamageCheck
 /* 16BEE: 60 */       RTS
 
@@ -4513,7 +4513,7 @@ ADB1_table:
     .byte $10,$00  ;yspeed & yspeed fraction
     .byte $F0,$FF  ;-"-
 L16DB5:
-/* 16DB5: 20 D4 AD */ JSR L16DD4
+/* 16DB5: 20 D4 AD */ JSR F16DD4
 /* 16DB8: A0 10 */    LDY #$10
 /* 16DBA: BD E0 06 */ LDA ObjectType,X
 /* 16DBD: C9 07 */    CMP #$07
@@ -4531,7 +4531,7 @@ L16DC3:
 
 
 
-L16DD4:
+F16DD4:
 /* 16DD4: BD 20 04 */ LDA ObjectFlags,X
 /* 16DD7: 29 08 */    AND #$08
 /* 16DD9: D0 2E */    BNE L16E09 ; ++                                              ; $AE09
@@ -4567,16 +4567,16 @@ L16E09: ; ++
 /* 16E10: 60 */       RTS
 
 AI_FlyingShell:
-/* 16E11: 20 A5 B3 */ JSR L173A5
+/* 16E11: 20 A5 B3 */ JSR F173A5
 /* 16E14: BD 20 04 */ LDA ObjectFlags,X
 /* 16E17: 29 20 */    AND #$20
 /* 16E19: D0 0B */    BNE L16E26
 /* 16E1B: FE 40 06 */ INC ObjectFireDelay,X
-/* 16E1E: 20 A3 AF */ JSR L16FA3
+/* 16E1E: 20 A3 AF */ JSR F16FA3
 /* 16E21: 20 A6 AE */ JSR CloneObject
 /* 16E24: 90 1B */    BCC L16E41
 L16E26:
-/* 16E26: 20 D4 AD */ JSR L16DD4
+/* 16E26: 20 D4 AD */ JSR F16DD4
 
 /* 16E29: A9 80 */    LDA #$80
 /* 16E2B: 9D 00 06 */ STA ObjectPosY,X
@@ -4730,8 +4730,8 @@ L16F20: ; +
 /* 16F25: 60 */       RTS
 
 AI_Beak:
-/* 16F26: 20 A5 B3 */ JSR L173A5
-/* 16F29: 20 A3 AF */ JSR L16FA3
+/* 16F26: 20 A5 B3 */ JSR F173A5
+/* 16F29: 20 A3 AF */ JSR F16FA3
 /* 16F2C: 20 49 BE */ JSR EnemyAI_MovementsAndDamageCheck
 /* 16F2F: FE 40 06 */ INC ObjectFireDelay,X
 /* 16F32: BD 40 04 */ LDA ObjectUnknown440,X
@@ -4806,14 +4806,14 @@ L16F9D:
 L16FA2:
 /* 16FA2: 60 */       RTS
 
-L16FA3:
+F16FA3:
 /* 16FA3: BD 40 04 */ LDA ObjectUnknown440,X
 /* 16FA6: 29 F0 */    AND #$f0
 /* 16FA8: D0 0A */    BNE L16FB4
 /* 16FAA: BD 20 04 */ LDA ObjectFlags,X
 /* 16FAD: 29 80 */    AND #$80
 /* 16FAF: F0 03 */    BEQ L16FB4
-/* 16FB1: 20 52 BF */ JSR L17F52
+/* 16FB1: 20 52 BF */ JSR F17F52
 L16FB4:
 /* 16FB4: 60 */       RTS
 
@@ -4916,16 +4916,16 @@ AI_SniperJoe:
 /* 17062: F0 08 */    BEQ L1706C
 /* 17064: A9 20 */    LDA #$20
 /* 17066: 9D 40 06 */ STA ObjectFireDelay,X
-/* 17069: 20 52 BF */ JSR L17F52
+/* 17069: 20 52 BF */ JSR F17F52
 L1706C:
-/* 1706C: 20 E0 B0 */ JSR L170E0
+/* 1706C: 20 E0 B0 */ JSR F170E0
 /* 1706F: 4C 92 B0 */ JMP L17092
 L17072:
 /* 17072: C9 00 */    CMP #$00
 /* 17074: F0 25 */    BEQ L1709B
 /* 17076: C9 20 */    CMP #$20
 /* 17078: 08 */       PHP
-/* 17079: 20 E0 B0 */ JSR L170E0
+/* 17079: 20 E0 B0 */ JSR F170E0
 /* 1707C: 28 */       PLP
 /* 1707D: D0 5A */    BNE L170D9
 /* 1707F: BD 40 06 */ LDA ObjectFireDelay,X
@@ -4982,7 +4982,7 @@ L170DA:
 L170DD:
 /* 170DD: 20 20 20 */ JSR $2020
 
-L170E0:
+F170E0:
 /* 170E0: 20 3B F6 */ JSR EnemySearchMegaman
 /* 170E3: 18 */       CLC
 /* 170E4: 69 38 */    ADC #$38
@@ -5229,7 +5229,7 @@ L172A0:
 /* 172B2: B9 C6 B2 */ LDA L172C6,Y
 /* 172B5: 9D 40 06 */ STA ObjectFireDelay,X
 L172B8:
-/* 172B8: 20 A3 AF */ JSR L16FA3
+/* 172B8: 20 A3 AF */ JSR F16FA3
 /* 172BB: 20 49 BE */ JSR EnemyAI_MovementsAndDamageCheck
 /* 172BE: A5 2B */    LDA $2B
 /* 172C0: F0 03 */    BEQ L172C5
@@ -5261,7 +5261,7 @@ AI_ScrewBomberCeiling:
 /* 172DE: A9 FC */    LDA #$fc
 /* 172E0: 85 0F */    STA $0F
 L172E2: ; +
-/* 172E2: 20 A5 B3 */ JSR L173A5
+/* 172E2: 20 A5 B3 */ JSR F173A5
 /* 172E5: BD 40 04 */ LDA ObjectUnknown440,X
 /* 172E8: F0 04 */    BEQ L172EE
 /* 172EA: C9 01 */    CMP #$01
@@ -5353,7 +5353,7 @@ Table_B38E: .byte $20, $3F, $7D
 B391_table: .byte $60,$60,$5C,$64, $58,$68,$5C,$64, $60,$60
 B39B_table: .byte $42,$42,$42,$42, $02,$02,$02,$02, $02,$02
 
-L173A5:
+F173A5:
 /* 173A5: BD A0 06 */ LDA ObjectLifeCycleCounter,X
 /* 173A8: F0 05 */    BEQ L173AF
 /* 173AA: 20 49 BE */ JSR EnemyAI_MovementsAndDamageCheck
@@ -5673,8 +5673,8 @@ L175EF:
 L17603:
 /* 17603: 20 49 BE */ JSR EnemyAI_MovementsAndDamageCheck
 /* 17606: 90 06 */    BCC L1760E
-/* 17608: 20 6B B6 */ JSR L1766B
-/* 1760B: 20 4A C6 */ JSR L1C64A
+/* 17608: 20 6B B6 */ JSR F1766B
+/* 1760B: 20 4A C6 */ JSR F1C64A
 L1760E:
 /* 1760E: 60 */       RTS
 
@@ -5713,22 +5713,22 @@ L1763C:
 /* 17646: E5 0C */    SBC $0C
 /* 17648: 9D 40 06 */ STA ObjectFireDelay,X
 L1764B:
-/* 1764B: 20 6B B6 */ JSR L1766B
+/* 1764B: 20 6B B6 */ JSR F1766B
 /* 1764E: 38 */       SEC
 /* 1764F: BD 00 06 */ LDA ObjectPosY,X
 /* 17652: E9 20 */    SBC #$20
-/* 17654: 20 3F C6 */ JSR L1C63F
+/* 17654: 20 3F C6 */ JSR F1C63F
 L17657:
 /* 17657: BD A0 06 */ LDA ObjectLifeCycleCounter,X
 /* 1765A: C9 01 */    CMP #$01
 /* 1765C: D0 06 */    BNE L17664
-/* 1765E: 20 6B B6 */ JSR L1766B
-/* 17661: 20 4A C6 */ JSR L1C64A
+/* 1765E: 20 6B B6 */ JSR F1766B
+/* 17661: 20 4A C6 */ JSR F1C64A
 L17664:
 /* 17664: A9 30 */    LDA #$30
 /* 17666: 9D 40 04 */ STA ObjectUnknown440,X
 /* 17669: D0 98 */    BNE L17603
-L1766B:
+F1766B:
 /* 1766B: BD 80 04 */ LDA ObjectPosX,X
 /* 1766E: 29 F0 */    AND #$f0
 /* 17670: 1D 60 04 */ ORA ObjectPosScreen,X
@@ -6575,7 +6575,7 @@ L17C31:
 /* 17C55: 69 00 */    ADC #$00
 /* 17C57: 85 49 */    STA $49
 /* 17C59: 85 01 */    STA $01
-/* 17C5B: 20 28 F6 */ JSR L1F628
+/* 17C5B: 20 28 F6 */ JSR F1F628
 /* 17C5E: A5 03 */    LDA $03
 /* 17C60: C9 0C */    CMP #$0c
 /* 17C62: B0 06 */    BCS L17C6A
@@ -6689,7 +6689,7 @@ L17D1D:
 L17D26:
 /* 17D26: A9 04 */    LDA #$04
 /* 17D28: 9D C0 04 */ STA ObjectXSpeed,X
-/* 17D2B: 20 C5 E8 */ JSR L1E8C5
+/* 17D2B: 20 C5 E8 */ JSR F1E8C5
 /* 17D2E: 60 */       RTS
 ; same routine continued
 L17D2F:
@@ -6724,7 +6724,7 @@ L17D50:
 /* 17D6A: 9D 40 06 */ STA ObjectFireDelay,X
 L17D6D:
 /* 17D6D: A6 2F */    LDX RefObjectNum
-/* 17D6F: 20 73 E8 */ JSR L1E873
+/* 17D6F: 20 73 E8 */ JSR F1E873
 /* 17D72: 60 */       RTS
 ; same routine continued
 L17D73:
@@ -7076,7 +7076,7 @@ WeaponDamageAddr:
 
 
 
-L17F52:
+F17F52:
 /* 17F52: BD 20 04 */ LDA ObjectFlags,X
 /* 17F55: 29 7F */    AND #$7f
 /* 17F57: 9D 20 04 */ STA ObjectFlags,X

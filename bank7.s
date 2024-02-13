@@ -164,7 +164,7 @@ L1C0BB: ; -
 L1C0C3: ; -
 /* 1C0C3: A2 00 */     ldx #$00
 /* 1C0C5: 20 81 C1 */  jsr LevelEndAddThousandPoints
-/* 1C0C8: 20 AC C1 */  jsr L1C1AC
+/* 1C0C8: 20 AC C1 */  jsr F1C1AC
 /* 1C0CB: 20 1B C0 */  jsr NextFrame                                  ; $C01B
 /* 1C0CE: C6 3D */     dec LevelClearScoreInThousands
 /* 1C0D0: D0 F1 */     bne L1C0C3 ; -                                           ; $C0C3
@@ -183,15 +183,15 @@ L1C0C3: ; -
 L1C0E7: ; -
 /* 1C0E7: A2 03 */     ldx #$03
 /* 1C0E9: 20 81 C1 */  jsr LevelEndAddThousandPoints
-/* 1C0EC: 20 AC C1 */  jsr L1C1AC
-/* 1C0EF: 20 BE C1 */  jsr L1C1BE
+/* 1C0EC: 20 AC C1 */  jsr F1C1AC
+/* 1C0EF: 20 BE C1 */  jsr F1C1BE
 /* 1C0F2: 20 1B C0 */  jsr NextFrame                                   ; $C01B
 /* 1C0F5: C6 AE */     dec BonusPearlCount
 /* 1C0F7: D0 EE */     bne L1C0E7 ; -                                           ; $C0E7
 L1C0F9: ; +
 /* 1C0F9: 20 31 D1 */  jsr UpdateGraphics                              ; $D131
-/* 1C0FC: 20 AC C1 */  jsr L1C1AC
-/* 1C0FF: 20 BE C1 */  jsr L1C1BE
+/* 1C0FC: 20 AC C1 */  jsr F1C1AC
+/* 1C0FF: 20 BE C1 */  jsr F1C1BE
 
 ; Wait 6-7 seconds
 /* 1C102: A9 FF */     lda #$FF
@@ -303,7 +303,7 @@ L1C1AB: ; +
 
 
 
-L1C1AC:
+F1C1AC:
 /* 1C1AC: A2 02 */     ldx #$02    ; 3 sprites
 /* 1C1AE: 86 0E */     stx $0E
 /* 1C1B0: A0 C0 */     ldy #$C0    ; spritepage index = #$C4
@@ -318,7 +318,7 @@ L1C1AC:
 ;
 ;
 
-L1C1BE:
+F1C1BE:
 /* 1C1BE: A2 04 */     ldx #$04
 /* 1C1C0: A9 01 */     lda #$01    ; 2 sprites
 /* 1C1C2: 85 0E */     sta $0E
@@ -714,7 +714,7 @@ L1C3FD: ; +++
 
 
 ; Arrived from bank 6
-Lbl_c400:
+F1C400:
 /* 1C400: AA */        tax
 /* 1C401: 85 42 */     sta CurrentBank
 /* 1C403: 9D 00 C0 */  sta BankTable,x
@@ -751,14 +751,14 @@ TeleportToStage_Bank06callback:
 /* 1C430: 20 E0 C4 */  jsr TeleportToStage                             ; $C4E0
 /* 1C433: 4C 56 C4 */  jmp SwitchBank06_c
 
-Lbl_c436:
+F1C436:
 /* 1C436: 4C 7B F6 */  jmp InitActor
 
-Lbl_c439:
+F1C439:
 /* 1C439: 20 B3 C3 */  jsr SwitchBank05                                ; $C3B3
 /* 1C43C: 20 6D 9E */  jsr ObjectUpdateMovementLeft
 /* 1C43F: 20 8F 98 */  jsr AutoCenterScreen
-Lbl_c442:
+F1C442:
 /* 1C442: 20 31 D1 */  jsr UpdateGraphics                              ; $D131
 /* 1C445: 20 1B C0 */  jsr NextFrame                                   ; $C01B
 /* 1C448: E6 BD */     inc $BD
@@ -954,7 +954,7 @@ L1C556: ; +
 /* 1C556: B9 4A 86 */  lda Lbl_864a,y
 /* 1C559: A8 */        tay
 /* 1C55A: 4C 64 C5 */  jmp L1C564 ; ++                                          ; $C564
-L1C55D:
+F1C55D:
 /* 1C55D: A9 06 */     lda #$06
 /* 1C55F: 85 42 */     sta CurrentBank
 /* 1C561: 8D 06 C0 */  sta BankTable+6
@@ -1055,7 +1055,7 @@ L1C5C9: ; +
 
 
 
-L1C5D5:
+F1C5D5:
 /* 1C5D5: A5 05 */     lda $05
 /* 1C5D7: 85 4B */     sta $4B
 /* 1C5D9: A5 04 */     lda $04
@@ -1118,14 +1118,14 @@ LoadActiveByIndexAndSetBlockingness:
 /* 1C63A: 85 0D */     sta $0D
 /* 1C63C: 4C B3 C3 */  jmp SwitchBank05                                ; $C3B3
 
-L1C63F:
+F1C63F:
 /* 1C63F: 20 9C C3 */  jsr SwitchBankStage                             ; $C39C
 /* 1C642: A4 0C */     ldy $0C
 /* 1C644: 99 24 07 */  sta RoomActiveTable+4,y
 /* 1C647: 4C B3 C3 */  jmp SwitchBank05                                ; $C3B3
 
 
-L1C64A:
+F1C64A:
 /* 1C64A: 20 9C C3 */  jsr SwitchBankStage                             ; $C39C
 /* 1C64D: A4 0C */     ldy $0C
 /* 1C64F: B9 26 07 */  lda RoomActiveTable+6,y
@@ -1394,7 +1394,7 @@ SwitchBankTile:
 
 
 
-L1C7C5:
+F1C7C5:
 /* 1C7C5: A9 4C */     lda #$4C
 /* 1C7C7: 85 0C */     sta $0C
 /* 1C7C9: A9 00 */     lda #$00
@@ -2191,7 +2191,7 @@ L1CC3E: ; -
 /* 1CC53: CA */        dex
 /* 1CC54: 10 E8 */     bpl L1CC3E ; -                                           ; $CC3E
 
-/* 1CC56: 20 E1 D7 */  jsr L1D7E1
+/* 1CC56: 20 E1 D7 */  jsr F1D7E1
 /* 1CC59: 4C B3 C3 */  jmp SwitchBank05                                ; $C3B3
 
 CC5C_table:
@@ -2684,7 +2684,7 @@ Adjust32x32BlockAddress:
 
 
 
-L1CF23:
+F1CF23:
 /* 1CF23: 20 9C C3 */  jsr SwitchBankStage                             ; $C39C
 /* 1CF26: A5 33 */     lda $33
 /* 1CF28: 4A */        lsr a
@@ -3139,7 +3139,7 @@ L1D1E4: ; +
 /* 1D1E4: A9 00 */     lda #$00
 /* 1D1E6: 9D 40 06 */  sta ObjectFireDelay,x
 L1D1E9: ; ++
-/* 1D1E9: 20 F8 D2 */  jsr L1D2F8
+/* 1D1E9: 20 F8 D2 */  jsr F1D2F8
 
 L1D1EC: ; +++
 /* 1D1EC: A9 00 */     lda #$00
@@ -3333,13 +3333,13 @@ L1D2B3: ; +
 /* 1D2CB: B1 00 */     lda ($00),y
 /* 1D2CD: 48 */        pha
 
-; jsr L1D2F8 if $6A0,X = 0
+; jsr F1D2F8 if $6A0,X = 0
 /* 1D2CE: BD A0 06 */  lda ObjectLifeCycleCounter,x
 /* 1D2D1: F0 03 */     beq L1D2D6 ; +                                           ; $D2D6
 /* 1D2D3: 4C D9 D2 */  jmp L1D2D9
 
 L1D2D6: ; +
-/* 1D2D6: 20 F8 D2 */  jsr L1D2F8
+/* 1D2D6: 20 F8 D2 */  jsr F1D2F8
 
 L1D2D9:
 /* 1D2D9: 68 */        pla
@@ -3364,7 +3364,7 @@ L1D2EB: ; +
 
 
 
-L1D2F8:
+F1D2F8:
 /* 1D2F8: A0 00 */     ldy #$00
 /* 1D2FA: B1 00 */     lda ($00),y
 
@@ -4398,7 +4398,7 @@ CurrentTileStateBits:
 SpikeKill1:
 /* 1D7DE: 4C 19 C2 */  jmp MegaManKilled                               ; $C219
 
-L1D7E1:
+F1D7E1:
 /* 1D7E1: A2 02 */     ldx #$02
 /* 1D7E3: A9 00 */     lda #$00
 /* 1D7E5: 85 96 */     sta $96
@@ -4730,7 +4730,7 @@ L1D9D5: ; ++
 
 /* 1D9DC: A5 0C */     lda $0C
 /* 1D9DE: 95 6B */     sta Meters+1,x
-L1D9E0:
+F1D9E0:
 /* 1D9E0: A9 FF */     lda #$FF
 /* 1D9E2: 9D 00 04 */  sta ObjectSpriteNum,x
 
@@ -4938,7 +4938,7 @@ L1DB1C: ; +
 /* 1DB43: A5 1B */     lda ScrollPosScreen
 /* 1DB45: 69 00 */     adc #$00
 /* 1DB47: 85 05 */     sta $05
-/* 1DB49: 20 E0 D9 */  jsr L1D9E0
+/* 1DB49: 20 E0 D9 */  jsr F1D9E0
 /* 1DB4C: A5 91 */     lda $91
 /* 1DB4E: D0 02 */     bne L1DB52 ; +                                           ; $DB52
 /* 1DB50: 85 8F */     sta ZigZagFireStatus
@@ -5005,7 +5005,7 @@ L1DBAF: ; ++
 ; Not native boss battle, or boss door closed.
 /* 1DBAF: A5 AC */     lda FightingBossNum
 /* 1DBB1: C9 06 */     cmp #$06
-/* 1DBB3: 90 0F */     bcc L1DBC4
+/* 1DBB3: 90 0F */     bcc F1DBC4
 /* 1DBB5: F0 0A */     beq L1DBC1
 /* 1DBB7: C9 08 */     cmp #$08
 /* 1DBB9: 90 03 */     bcc L1DBBE
@@ -5018,7 +5018,7 @@ L1DBBE:
 L1DBC1:
 /* 1DBC1: 4C 94 F0 */  jmp Boss6Init
 ; Bosses 0-5
-L1DBC4:
+F1DBC4:
 /* 1DBC4: A2 00 */     ldx #$00
 /* 1DBC6: 86 2F */     stx RefObjectNum
 /* 1DBC8: 86 43 */     stx BossVariable43
@@ -5344,7 +5344,7 @@ L1DDFE:
 
 
 CutmanStrategy3:
-/* 1DE11: 20 90 DE */  jsr L1DE90
+/* 1DE11: 20 90 DE */  jsr F1DE90
 /* 1DE14: A2 0E */     ldx #$0E
 /* 1DE16: 29 01 */     and #$01
 /* 1DE18: D0 0A */     bne L1DE24
@@ -5359,7 +5359,7 @@ L1DE24:
 
 
 CutmanStrategy4:
-/* 1DE27: 20 90 DE */  jsr L1DE90
+/* 1DE27: 20 90 DE */  jsr F1DE90
 /* 1DE2A: E6 3E */     inc BossCurrentStrategy
 /* 1DE2C: 29 01 */     and #$01
 /* 1DE2E: D0 0C */     bne L1DE3C ; +
@@ -5409,7 +5409,7 @@ L1DE79: ; ++
 
 
 CutmanStrategy7:
-/* 1DE7A: 20 90 DE */  jsr L1DE90 ; ++
+/* 1DE7A: 20 90 DE */  jsr F1DE90 ; ++
 /* 1DE7D: A2 0D */     ldx #$0D
 /* 1DE7F: 29 01 */     and #$01
 /* 1DE81: D0 0A */     bne L1DE8D ; +
@@ -5421,7 +5421,7 @@ CutmanStrategy7:
 L1DE8D: ; +
 /* 1DE8D: 86 3E */     stx BossCurrentStrategy
 /* 1DE8F: 60 */        rts
-L1DE90: ; ++
+F1DE90: ; ++
 /* 1DE90: 20 F8 ED */  jsr BossFuncWalkTowardsMegaman
 /* 1DE93: A9 03 */     lda #$03
 /* 1DE95: 20 A0 C5 */  jsr RandomFunc
@@ -5858,7 +5858,7 @@ IcemanStrategy1:
 /* 1E168: 8D 80 04 */  sta ObjectPosX+0
 /* 1E16B: E0 02 */     cpx #$02
 /* 1E16D: 90 04 */     bcc L1E173
-/* 1E16F: 20 FB ED */  jsr L1EDFB
+/* 1E16F: 20 FB ED */  jsr F1EDFB
 /* 1E172: 60 */        rts
 
 
@@ -5880,7 +5880,7 @@ L1E173:
 IcemanStrategy2:
 /* 1E18D: AD 41 06 */  lda ObjectFireDelay+1
 /* 1E190: F0 04 */     beq L1E196 ; +
-/* 1E192: 20 FB ED */  jsr L1EDFB
+/* 1E192: 20 FB ED */  jsr F1EDFB
 /* 1E195: 60 */        rts
 L1E196: ; +
 /* 1E196: E6 3E */     inc BossCurrentStrategy
@@ -6110,7 +6110,7 @@ L1E329: ; +
 /* 1E329: A0 1C */     ldy #$1C
 /* 1E32B: A9 04 */     lda #$04
 /* 1E32D: 85 0D */     sta $0D
-/* 1E32F: 20 27 EE */  jsr L1EE27
+/* 1E32F: 20 27 EE */  jsr F1EE27
 /* 1E332: 4C 3A E3 */  jmp L1E33A ; +++
 L1E335: ; ++
 /* 1E335: A6 05 */     ldx $05
@@ -6164,7 +6164,7 @@ L1E369:
 /* 1E387: A9 01 */     lda #$01
 /* 1E389: 8D C1 04 */  sta ObjectXSpeed+1
 L1E38C:
-/* 1E38C: 20 FB ED */  jsr L1EDFB
+/* 1E38C: 20 FB ED */  jsr F1EDFB
 /* 1E38F: A5 2A */     lda $2A
 /* 1E391: F0 05 */     beq L1E398
 /* 1E393: 20 C2 ED */  jsr BossFuncEDC2
@@ -6181,7 +6181,7 @@ FiremanStrategy1:
 /* 1E3A2: B0 12 */     bcs L1E3B6
 /* 1E3A4: 68 */        pla
 /* 1E3A5: 8D 21 04 */  sta ObjectFlags+1
-/* 1E3A8: 20 FB ED */  jsr L1EDFB
+/* 1E3A8: 20 FB ED */  jsr F1EDFB
 /* 1E3AB: A5 2A */     lda $2A
 /* 1E3AD: D0 01 */     bne L1E3B0
 /* 1E3AF: 60 */        rts
@@ -6296,7 +6296,7 @@ L1E444: ; +
 
 ElecmanStrategy0:
 /* 1E451: A9 48 */     lda #$48
-L1E453:
+F1E453:
 /* 1E453: CD 01 04 */  cmp ObjectSpriteNum+1
 /* 1E456: F0 13 */     beq L1E46B
 /* 1E458: 8D 01 04 */  sta ObjectSpriteNum+1
@@ -6322,7 +6322,7 @@ L1E483:
 /* 1E483: 20 C2 ED */  jsr BossFuncEDC2
 /* 1E486: 68 */        pla
 /* 1E487: 8D 80 04 */  sta ObjectPosX+0
-/* 1E48A: 20 FB ED */  jsr L1EDFB
+/* 1E48A: 20 FB ED */  jsr F1EDFB
 /* 1E48D: A5 2A */     lda $2A
 /* 1E48F: D0 06 */     bne L1E497
 
@@ -6339,7 +6339,7 @@ ElecmanStrategy1:
 /* 1E49C: A9 00 */     lda #$00
 /* 1E49E: 8D E1 04 */  sta ObjectXSpeedFraction+1
 /* 1E4A1: 8D C1 04 */  sta ObjectXSpeed+1
-L1E4A4:
+F1E4A4:
 /* 1E4A4: 8D 41 04 */  sta ObjectUnknown440+1
 /* 1E4A7: A9 49 */     lda #$49
 /* 1E4A9: 8D 01 04 */  sta ObjectSpriteNum+1
@@ -6428,7 +6428,7 @@ L1E52B: ; +
 
 ElecmanStrategy6:
 /* 1E52C: A9 00 */     lda #$00
-/* 1E52E: 20 A4 E4 */  jsr L1E4A4
+/* 1E52E: 20 A4 E4 */  jsr F1E4A4
 /* 1E531: F0 08 */     beq L1E53B
 L1E533:
 /* 1E533: A9 00 */     lda #$00
@@ -6491,7 +6491,7 @@ L1E574: ; +
 /* 1E57E: 6C 04 00 */  jmp ($0004)
 
 GutsmanStrategy0:
-L1E581:
+F1E581:
 /* 1E581: A9 1F */     lda #$1F
 /* 1E583: 8D 41 06 */  sta ObjectFireDelay+1
 /* 1E586: A9 30 */     lda #$30
@@ -6516,7 +6516,7 @@ GutsmanStrategy5:
 /* 1E5A9: A5 46 */     lda RandomSeed
 /* 1E5AB: 29 01 */     and #$01
 /* 1E5AD: F0 42 */     beq L1E5F1
-/* 1E5AF: 20 E0 E5 */  jsr L1E5E0
+/* 1E5AF: 20 E0 E5 */  jsr F1E5E0
 /* 1E5B2: A9 09 */     lda #$09
 /* 1E5B4: 85 3E */     sta BossCurrentStrategy
 L1E5B6: ; +
@@ -6526,7 +6526,7 @@ L1E5B6: ; +
 GutsmanStrategy3:
 /* 1E5B7: A5 47 */     lda GutsmanStompCounter
 /* 1E5B9: D0 07 */     bne L1E5C2 ; +                                           ; $E5C2
-/* 1E5BB: 20 E0 E5 */  jsr L1E5E0
+/* 1E5BB: 20 E0 E5 */  jsr F1E5E0
 /* 1E5BE: A9 07 */     lda #$07
 /* 1E5C0: 85 3E */     sta BossCurrentStrategy
 L1E5C2: ; +
@@ -6540,7 +6540,7 @@ GutsmanStrategy7:
 /* 1E5C7: A5 3E */     lda BossCurrentStrategy
 /* 1E5C9: 48 */        pha
 /* 1E5CA: 20 C2 ED */  jsr BossFuncEDC2
-/* 1E5CD: 20 81 E5 */  jsr L1E581
+/* 1E5CD: 20 81 E5 */  jsr F1E581
 /* 1E5D0: 68 */        pla
 /* 1E5D1: 85 3E */     sta BossCurrentStrategy
 /* 1E5D3: C6 3E */     dec BossCurrentStrategy
@@ -6554,9 +6554,9 @@ GutsmanStrategy15:
 /* 1E5DA: A5 46 */     lda RandomSeed
 /* 1E5DC: 29 01 */     and #$01
 /* 1E5DE: D0 15 */     bne L1E5F5
-L1E5E0:
+F1E5E0:
 /* 1E5E0: 20 C2 ED */  jsr BossFuncEDC2
-/* 1E5E3: 20 81 E5 */  jsr L1E581
+/* 1E5E3: 20 81 E5 */  jsr F1E581
 /* 1E5E6: A5 43 */     lda BossVariable43
 /* 1E5E8: 49 40 */     eor #$40
 /* 1E5EA: 85 43 */     sta BossVariable43
@@ -6579,7 +6579,7 @@ GutsmanStrategy2:
 /* 1E5FC: 8D E1 04 */  sta ObjectXSpeedFraction+1
 /* 1E5FF: A9 01 */     lda #$01
 /* 1E601: 8D C1 04 */  sta ObjectXSpeed+1
-L1E604:
+F1E604:
 /* 1E604: AD 41 06 */  lda ObjectFireDelay+1
 /* 1E607: D0 1E */     bne L1E627
 /* 1E609: A5 23 */     lda FrameCounter
@@ -6617,7 +6617,7 @@ GutsmanStrategy17:
 /* 1E636: C9 01 */     cmp #$01
 /* 1E638: 90 17 */     bcc L1E651 ; ++
 /* 1E63A: 08 */        php
-/* 1E63B: 20 81 E5 */  jsr L1E581
+/* 1E63B: 20 81 E5 */  jsr F1E581
 /* 1E63E: 28 */        plp
 /* 1E63F: D0 05 */     bne L1E646 ; +
 /* 1E641: A9 0F */     lda #$0F
@@ -6683,7 +6683,7 @@ L1E69F: ; +
 
 
 GutsmanStrategy20:
-/* 1E6A0: 20 04 E6 */  jsr L1E604
+/* 1E6A0: 20 04 E6 */  jsr F1E604
 /* 1E6A3: F0 FA */     beq L1E69F
 /* 1E6A5: A9 2D */     lda #$2D
 /* 1E6A7: 8D 01 04 */  sta ObjectSpriteNum+1
@@ -6921,7 +6921,7 @@ Boss6_Shoot:
 /* 1E801: 85 01 */     sta $01
 /* 1E803: A9 00 */     lda #$00
 /* 1E805: 85 00 */     sta $00
-/* 1E807: 20 28 F6 */  jsr L1F628
+/* 1E807: 20 28 F6 */  jsr F1F628
 L1E80A:
 /* 1E80A: A9 3F */     lda #$3F
 /* 1E80C: 85 44 */     sta BossVariable44
@@ -6988,7 +6988,7 @@ L1E872:
 
 
 
-L1E873:
+F1E873:
 /* 1E873: BC 40 06 */  ldy ObjectFireDelay,x
 /* 1E876: B9 89 E9 */  lda E989_table,y
 /* 1E879: C9 FF */     cmp #$FF
@@ -6998,14 +6998,14 @@ L1E873:
 /* 1E882: B9 8C E9 */  lda E989_table+3,y
 /* 1E885: 85 04 */     sta $04
 /* 1E887: BE 8A E9 */  ldx E989_table+1,y
-/* 1E88A: 20 B3 E8 */  jsr L1E8B3
+/* 1E88A: 20 B3 E8 */  jsr F1E8B3
 /* 1E88D: A6 2F */     ldx RefObjectNum
-/* 1E88F: 20 44 E9 */  jsr L1E944
+/* 1E88F: 20 44 E9 */  jsr F1E944
 /* 1E892: BC 40 06 */  ldy ObjectFireDelay,x
 /* 1E895: B9 8A E9 */  lda E989_table+1,y
 /* 1E898: 09 04 */     ora #$04
 /* 1E89A: AA */        tax
-/* 1E89B: 20 B3 E8 */  jsr L1E8B3
+/* 1E89B: 20 B3 E8 */  jsr F1E8B3
 /* 1E89E: 60 */        rts
 
 
@@ -7014,7 +7014,7 @@ L1E873:
 
 
 L1E89F:
-/* 1E89F: 20 44 E9 */  jsr L1E944
+/* 1E89F: 20 44 E9 */  jsr F1E944
 /* 1E8A2: A2 00 */     ldx #$00
 L1E8A4:
 /* 1E8A4: B9 89 E9 */  lda E989_table,y
@@ -7023,7 +7023,7 @@ L1E8A4:
 /* 1E8AA: E8 */        inx
 /* 1E8AB: E0 04 */     cpx #$04
 /* 1E8AD: D0 F5 */     bne L1E8A4
-/* 1E8AF: 20 1D E9 */  jsr L1E91D
+/* 1E8AF: 20 1D E9 */  jsr F1E91D
 /* 1E8B2: 60 */        rts
 
 
@@ -7031,7 +7031,7 @@ L1E8A4:
 
 
 
-L1E8B3:
+F1E8B3:
 /* 1E8B3: A0 00 */     ldy #$00
 L1E8B5:
 /* 1E8B5: BD 21 EA */  lda EA21_table,x
@@ -7040,7 +7040,7 @@ L1E8B5:
 /* 1E8BC: C8 */        iny
 /* 1E8BD: C0 04 */     cpy #$04
 /* 1E8BF: D0 F4 */     bne L1E8B5
-/* 1E8C1: 20 1D E9 */  jsr L1E91D
+/* 1E8C1: 20 1D E9 */  jsr F1E91D
 /* 1E8C4: 60 */        rts
 
 
@@ -7050,7 +7050,7 @@ L1E8B5:
 
 
 
-L1E8C5:
+F1E8C5:
 /* 1E8C5: BD 40 06 */  lda ObjectFireDelay,x
 /* 1E8C8: C9 4C */     cmp #$4C
 /* 1E8CA: B0 05 */     bcs L1E8D1 ; +
@@ -7073,27 +7073,27 @@ L1E8D4: ; ++
 /* 1E8E8: C0 08 */     cpy #$08
 /* 1E8EA: D0 08 */     bne L1E8F4 ; +
 /* 1E8EC: A2 40 */     ldx #$40
-/* 1E8EE: 20 B3 E8 */  jsr L1E8B3
+/* 1E8EE: 20 B3 E8 */  jsr F1E8B3
 /* 1E8F1: 4C 03 E9 */  jmp L1E903 ; ++
 L1E8F4: ; +
 /* 1E8F4: C0 54 */     cpy #$54
 /* 1E8F6: D0 08 */     bne L1E900 ; +
 /* 1E8F8: A2 44 */     ldx #$44
-/* 1E8FA: 20 B3 E8 */  jsr L1E8B3
+/* 1E8FA: 20 B3 E8 */  jsr F1E8B3
 /* 1E8FD: 4C 03 E9 */  jmp L1E903 ; ++
 L1E900: ; +
-/* 1E900: 20 12 E9 */  jsr L1E912
+/* 1E900: 20 12 E9 */  jsr F1E912
 L1E903: ; ++
-/* 1E903: 20 1D E9 */  jsr L1E91D
+/* 1E903: 20 1D E9 */  jsr F1E91D
 /* 1E906: A4 0C */     ldy $0C
 L1E908: ; +++
-/* 1E908: 20 44 E9 */  jsr L1E944
-/* 1E90B: 20 12 E9 */  jsr L1E912
-/* 1E90E: 20 1D E9 */  jsr L1E91D
+/* 1E908: 20 44 E9 */  jsr F1E944
+/* 1E90B: 20 12 E9 */  jsr F1E912
+/* 1E90E: 20 1D E9 */  jsr F1E91D
 /* 1E911: 60 */        rts
 
 
-L1E912:
+F1E912:
 /* 1E912: A9 00 */     lda #$00
 /* 1E914: 85 06 */     sta CurrentRoomPointer
 /* 1E916: 85 07 */     sta CurrentRoomPointer+1
@@ -7102,7 +7102,7 @@ L1E912:
 /* 1E91C: 60 */        rts
 
 
-L1E91D:
+F1E91D:
 /* 1E91D: A5 AA */     lda $AA
 /* 1E91F: 0A */        asl a
 /* 1E920: A8 */        tay
@@ -7133,7 +7133,7 @@ L1E930:
 
 
 
-L1E944:
+F1E944:
 /* 1E944: A9 09 */     lda #$09
 /* 1E946: 85 05 */     sta $05
 /* 1E948: BD 00 06 */  lda ObjectPosY,x
@@ -7258,7 +7258,7 @@ L1EA89: ; +
 
 Boss7Strategy0:
 /* 1EA97: A9 06 */     lda #$06
-/* 1EA99: 20 53 E4 */  jsr L1E453
+/* 1EA99: 20 53 E4 */  jsr F1E453
 /* 1EA9C: A9 60 */     lda #$60
 /* 1EA9E: 8D E1 04 */  sta ObjectXSpeedFraction+1
 /* 1EAA1: A9 01 */     lda #$01
@@ -7270,10 +7270,10 @@ Boss7Strategy0:
 
 
 Boss7Strategy1:
-/* 1EAA7: 20 4D EB */  jsr L1EB4D
+/* 1EAA7: 20 4D EB */  jsr F1EB4D
 /* 1EAAA: 90 07 */     bcc L1EAB3
 /* 1EAAC: 20 9C E4 */  jsr ElecmanStrategy1
-/* 1EAAF: 20 B8 EA */  jsr L1EAB8
+/* 1EAAF: 20 B8 EA */  jsr F1EAB8
 /* 1EAB2: 60 */        rts
 
 L1EAB3:
@@ -7286,7 +7286,7 @@ L1EAB3:
 
 
 ; If selected weapon is cutman or bombman then $401 = #$6E, else $401 = #$01
-L1EAB8:
+F1EAB8:
 /* 1EAB8: A0 6E */     ldy #$6E
 /* 1EABA: A5 5F */     lda WeaponSelect
 /* 1EABC: C9 01 */     cmp #$01
@@ -7338,11 +7338,11 @@ Boss7Strategy5:
 /* 1EAF5: 4C 19 E5 */  jmp ElecmanStrategy5
 
 Boss7Strategy6:
-/* 1EAF8: 20 4D EB */  jsr L1EB4D
+/* 1EAF8: 20 4D EB */  jsr F1EB4D
 /* 1EAFB: 90 2A */     bcc L1EB27 ; +++ ; EB27
 /* 1EAFD: A9 00 */     lda #$00
-/* 1EAFF: 20 A4 E4 */  jsr L1E4A4
-/* 1EB02: D0 17 */     bne L1EB1B ; ++ ; $EB1B
+/* 1EAFF: 20 A4 E4 */  jsr F1E4A4
+/* 1EB02: D0 17 */     bne F1EB1B ; ++ ; $EB1B
 ; If selected weapon is cutman or bombman then $401 = #$6F, else $401 = #$09
 /* 1EB04: A0 6F */     ldy #$6F
 /* 1EB06: A5 5F */     lda WeaponSelect
@@ -7356,11 +7356,11 @@ L1EB12: ; +
 /* 1EB15: A9 00 */     lda #$00
 /* 1EB17: 8D 41 06 */  sta ObjectFireDelay+1
 /* 1EB1A: 60 */        rts
-L1EB1B: ; ++
+F1EB1B: ; ++
 /* 1EB1B: A9 00 */     lda #$00
 /* 1EB1D: 8D E1 04 */  sta ObjectXSpeedFraction+1
 /* 1EB20: 8D C1 04 */  sta ObjectXSpeed+1
-/* 1EB23: 20 B8 EA */  jsr L1EAB8
+/* 1EB23: 20 B8 EA */  jsr F1EAB8
 /* 1EB26: 60 */        rts
 L1EB27: ; +++
 /* 1EB27: A9 0D */     lda #$0D
@@ -7370,13 +7370,13 @@ L1EB27: ; +++
 
 Boss7Strategy7:
 /* 1EB2C: 20 CF EA */  jsr Boss7Strategy2
-/* 1EB2F: D0 EA */     bne L1EB1B
+/* 1EB2F: D0 EA */     bne F1EB1B
 /* 1EB31: 60 */        rts
 
 Boss7Strategy8:
 /* 1EB32: 20 F8 ED */  jsr BossFuncWalkTowardsMegaman
 /* 1EB35: F0 0F */     beq L1EB46 ; ++
-/* 1EB37: 20 1B EB */  jsr L1EB1B
+/* 1EB37: 20 1B EB */  jsr F1EB1B
 /* 1EB3A: A5 3F */     lda BossVariable3F
 /* 1EB3C: F0 04 */     beq L1EB42 ; +
 /* 1EB3E: C6 3F */     dec BossVariable3F
@@ -7397,7 +7397,7 @@ Boss7Strategy9:
 
 ; If selected weapon is magnet beam or ??? (fireman/iceman) then clear carry
 ; else
-L1EB4D:
+F1EB4D:
 /* 1EB4D: A5 5F */     lda WeaponSelect
 /* 1EB4F: C9 06 */     cmp #$06
 /* 1EB51: 90 02 */     bcc L1EB55 ; +                                       ; $EB55
@@ -7564,7 +7564,7 @@ BossAI_Boss8:
 /* 1EC5B: 85 44 */     sta BossVariable44
 /* 1EC5D: E6 3E */     inc BossCurrentStrategy
 /* 1EC5F: 85 2F */     sta RefObjectNum
-/* 1EC61: 20 A6 F4 */  jsr L1F4A6
+/* 1EC61: 20 A6 F4 */  jsr F1F4A6
 /* 1EC64: 60 */        rts
 L1EC65: ; +
 /* 1EC65: D0 01 */     bne L1EC68 ; +++
@@ -7578,7 +7578,7 @@ L1EC68: ; +++
 L1EC70: ; +
 /* 1EC70: C6 3F */     dec BossVariable3F
 /* 1EC72: D0 F3 */     bne L1EC67 ; -
-/* 1EC74: 20 A6 F4 */  jsr L1F4A6
+/* 1EC74: 20 A6 F4 */  jsr F1F4A6
 /* 1EC77: B0 EE */     bcs L1EC67 ; -
 /* 1EC79: C6 3E */     dec BossCurrentStrategy
 /* 1EC7B: 60 */        rts
@@ -7610,7 +7610,7 @@ L1EC90: ; +
 /* 1ECA3: 20 76 C5 */  jsr FindFreeObject                              ; FindFreeObject
 /* 1ECA6: B0 0F */     bcs L1ECB7 ; +
 /* 1ECA8: A0 70 */     ldy #$70
-/* 1ECAA: 20 27 EE */  jsr L1EE27
+/* 1ECAA: 20 27 EE */  jsr F1EE27
 /* 1ECAD: A5 05 */     lda $05
 /* 1ECAF: 9D C0 04 */  sta ObjectXSpeed,x
 /* 1ECB2: A5 04 */     lda $04
@@ -7721,7 +7721,7 @@ BossAI_Boss10:
 /* 1ED60: 20 76 C5 */  jsr FindFreeObject                              ; FindFreeObject
 /* 1ED63: B0 26 */     bcs L1ED8B
 /* 1ED65: A0 77 */     ldy #$77
-/* 1ED67: 20 27 EE */  jsr L1EE27
+/* 1ED67: 20 27 EE */  jsr F1EE27
 /* 1ED6A: A9 49 */     lda #$49
 /* 1ED6C: 9D E0 06 */  sta ObjectType,x
 /* 1ED6F: 86 2F */     stx RefObjectNum
@@ -7729,7 +7729,7 @@ BossAI_Boss10:
 /* 1ED73: 85 01 */     sta $01
 /* 1ED75: A9 00 */     lda #$00
 /* 1ED77: 85 00 */     sta $00
-/* 1ED79: 20 28 F6 */  jsr L1F628
+/* 1ED79: 20 28 F6 */  jsr F1F628
 ; ?
 /* 1ED7C: A2 16 */     ldx #$16
 /* 1ED7E: 20 76 C5 */  jsr FindFreeObject                              ; FindFreeObject
@@ -7807,7 +7807,7 @@ L1EDE9: ; +
 
 BossFuncWalkTowardsMegaman:
 /* 1EDF8: 20 D5 ED */  jsr BossSearchMegaman
-L1EDFB:
+F1EDFB:
 /* 1EDFB: A2 01 */     ldx #$01
 /* 1EDFD: 86 2F */     stx RefObjectNum
 /* 1EDFF: A5 43 */     lda BossVariable43
@@ -7836,7 +7836,7 @@ Boss_FindAmmoSlot:
 /* 1EE22: 20 76 C5 */  jsr FindFreeObject                              ; FindFreeObject
 /* 1EE25: B0 70 */     bcs L1EE97
 ; Reset object (param: Y - values: 1C, 70 or 77)
-L1EE27:
+F1EE27:
 /* 1EE27: A9 00 */     lda #$00
 /* 1EE29: 9D A0 06 */  sta ObjectLifeCycleCounter,x
 /* 1EE2C: 9D 20 06 */  sta ObjectPosYfraction,x
@@ -7921,7 +7921,7 @@ BossFuncEF16:
 /* 1EF16: CD 01 04 */  cmp ObjectSpriteNum+1
 /* 1EF19: F0 17 */     beq L1EF32 ; +++
 /* 1EF1B: 8D 01 04 */  sta ObjectSpriteNum+1
-/* 1EF1E: 20 36 EF */  jsr L1EF36 ; ++++
+/* 1EF1E: 20 36 EF */  jsr F1EF36 ; ++++
 /* 1EF21: A5 AC */     lda FightingBossNum
 /* 1EF23: F0 09 */     beq L1EF2E ; +
 /* 1EF25: A9 00 */     lda #$00
@@ -7935,7 +7935,7 @@ L1EF30: ; ++
 L1EF32: ; +++
 /* 1EF32: 20 F8 ED */  jsr BossFuncWalkTowardsMegaman
 /* 1EF35: 60 */        rts
-L1EF36: ; ++++
+F1EF36: ; ++++
 /* 1EF36: 20 C2 ED */  jsr BossFuncEDC2
 /* 1EF39: A5 43 */     lda BossVariable43
 /* 1EF3B: 49 40 */     eor #$40
@@ -8069,7 +8069,7 @@ L1EFE4:
 /* 1F007: 8D 54 06 */  sta $0654
 /* 1F00A: A9 80 */     lda #$80
 /* 1F00C: 20 6C F0 */  jsr TimeDelay_WithPaletteRotation
-/* 1F00F: 20 C4 DB */  jsr L1DBC4
+/* 1F00F: 20 C4 DB */  jsr F1DBC4
 /* 1F012: A9 80 */     lda #$80
 /* 1F014: 20 6C F0 */  jsr TimeDelay_WithPaletteRotation
 /* 1F017: A9 F8 */     lda #$F8
@@ -8642,7 +8642,7 @@ L1F408:
 /* 1F432: 85 01 */     sta $01
 /* 1F434: A9 00 */     lda #$00
 /* 1F436: 85 00 */     sta $00
-/* 1F438: 20 28 F6 */  jsr L1F628
+/* 1F438: 20 28 F6 */  jsr F1F628
 L1F43B:
 /* 1F43B: A6 2F */     ldx RefObjectNum
 /* 1F43D: 68 */        pla
@@ -8705,7 +8705,7 @@ L1F49E:
 /* 1F4A3: A8 */        tay
 /* 1F4A4: D0 D6 */     bne L1F47C
 ; Create a bubblebot in random of positions
-L1F4A6:
+F1F4A6:
 /* 1F4A6: A9 03 */     lda #$03
 /* 1F4A8: 20 A0 C5 */  jsr RandomFunc
 /* 1F4AB: 85 0C */     sta $0C
@@ -8879,7 +8879,7 @@ F54C_table:
 
 ; In: $00, $01 are something
 ;
-L1F628:
+F1F628:
 /* 1F628: A5 0C */     lda $0C
 /* 1F62A: 85 02 */     sta $02
 /* 1F62C: A4 2F */     ldy RefObjectNum
@@ -9124,7 +9124,7 @@ GutsblockHitByElecBeam:
 /* 1F7AE: 85 00 */     sta $00
 /* 1F7B0: B9 22 07 */  lda RoomActiveTable+2,y ;load screen#
 /* 1F7B3: 85 01 */     sta $01
-L1F7B5:
+F1F7B5:
 /* 1F7B5: AD 25 04 */  lda ObjectFlags+5
 /* 1F7B8: 29 40 */     and #$40
 /* 1F7BA: 09 04 */     ora #$04
@@ -9197,7 +9197,7 @@ CreateExplosionObject:
 /* 1F84A: 9D 80 04 */  sta ObjectPosX,x
 /* 1F84D: B9 60 04 */  lda ObjectPosScreen,y
 /* 1F850: 9D 60 04 */  sta ObjectPosScreen,x
-L1F853:
+F1F853:
 /* 1F853: A5 0D */     lda $0D
 /* 1F855: 9D 00 04 */  sta ObjectSpriteNum,x
 /* 1F858: A4 0C */     ldy $0C
@@ -9249,13 +9249,13 @@ L1F8CF: ; +
 /* 1F8E0: 9D E0 04 */  sta ObjectXSpeedFraction,x
 /* 1F8E3: 85 06 */     sta CurrentRoomPointer
 /* 1F8E5: A5 02 */     lda $02
-/* 1F8E7: 20 4C F9 */  jsr L1F94C
+/* 1F8E7: 20 4C F9 */  jsr F1F94C
 /* 1F8EA: A5 09 */     lda CurrentRoomPointer+3
 /* 1F8EC: 85 07 */     sta CurrentRoomPointer+1
 /* 1F8EE: A5 08 */     lda CurrentRoomPointer+2
 /* 1F8F0: 85 06 */     sta CurrentRoomPointer
 /* 1F8F2: A5 03 */     lda $03
-/* 1F8F4: 20 4C F9 */  jsr L1F94C
+/* 1F8F4: 20 4C F9 */  jsr F1F94C
 /* 1F8F7: A6 0C */     ldx $0C
 /* 1F8F9: A5 09 */     lda CurrentRoomPointer+3
 /* 1F8FB: 9D 80 06 */  sta ObjectYSpeed,x
@@ -9270,13 +9270,13 @@ L1F906: ; +
 /* 1F90F: 9D 60 06 */  sta ObjectYSpeedFraction,x
 /* 1F912: 85 06 */     sta CurrentRoomPointer
 /* 1F914: A5 03 */     lda $03
-/* 1F916: 20 4C F9 */  jsr L1F94C
+/* 1F916: 20 4C F9 */  jsr F1F94C
 /* 1F919: A5 09 */     lda CurrentRoomPointer+3
 /* 1F91B: 85 07 */     sta CurrentRoomPointer+1
 /* 1F91D: A5 08 */     lda CurrentRoomPointer+2
 /* 1F91F: 85 06 */     sta CurrentRoomPointer
 /* 1F921: A5 02 */     lda $02
-/* 1F923: 20 4C F9 */  jsr L1F94C
+/* 1F923: 20 4C F9 */  jsr F1F94C
 /* 1F926: A6 0C */     ldx $0C
 /* 1F928: A5 09 */     lda CurrentRoomPointer+3
 /* 1F92A: 9D C0 04 */  sta ObjectXSpeed,x
@@ -9298,11 +9298,11 @@ L1F932:
 L1F94B:
 /* 1F94B: 60 */        rts
 
-L1F94C:
+F1F94C:
 /* 1F94C: 85 05 */     sta $05
 /* 1F94E: A9 00 */     lda #$00
 /* 1F950: 85 04 */     sta $04
-/* 1F952: 20 D5 C5 */  jsr L1C5D5
+/* 1F952: 20 D5 C5 */  jsr F1C5D5
 /* 1F955: 60 */        rts
 
 
